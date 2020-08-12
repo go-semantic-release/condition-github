@@ -1,4 +1,4 @@
-package github
+package condition
 
 import (
 	"os"
