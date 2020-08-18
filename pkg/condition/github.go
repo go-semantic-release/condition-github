@@ -6,11 +6,17 @@ import (
 	"strings"
 )
 
+var CIVERSION = "dev"
+
 type GitHubActions struct {
 }
 
 func (gha *GitHubActions) Name() string {
 	return "GitHub Actions"
+}
+
+func (gha *GitHubActions) Version() string {
+	return CIVERSION
 }
 
 func (gha *GitHubActions) GetCurrentBranch() string {
