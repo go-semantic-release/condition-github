@@ -8,8 +8,7 @@ import (
 
 var CIVERSION = "dev"
 
-type GitHubActions struct {
-}
+type GitHubActions struct{}
 
 func (gha *GitHubActions) Name() string {
 	return "GitHub Actions"
@@ -37,10 +36,10 @@ func (gha *GitHubActions) IsBranchRef() bool {
 func (gha *GitHubActions) RunCondition(config map[string]string) error {
 	defaultBranch := config["defaultBranch"]
 	if !gha.IsBranchRef() {
-		return fmt.Errorf("This test run is not running on a branch build.")
+		return fmt.Errorf("this test run is not running on a branch build")
 	}
 	if branch := gha.GetCurrentBranch(); defaultBranch != "*" && branch != defaultBranch {
-		return fmt.Errorf("This test run was triggered on the branch %s, while semantic-release is configured to only publish from %s.", branch, defaultBranch)
+		return fmt.Errorf("this test run was triggered on the branch %s, while semantic-release is configured to only publish from %s", branch, defaultBranch)
 	}
 	return nil
 }
